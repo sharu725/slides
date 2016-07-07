@@ -1,2 +1,67 @@
-var RevealMath=window.RevealMath||function(){var a=Reveal.getConfig().math||{};a.mathjax=a.mathjax||"https://cdn.mathjax.org/mathjax/latest/MathJax.js";a.config=a.config||"TeX-AMS_HTML-full";(function(a,c){var e=document.querySelector("head"),b=document.createElement("script");b.type="text/javascript";b.src=a;var d=function(){"function"===typeof c&&(c.call(),c=null)};b.onload=d;b.onreadystatechange=function(){"loaded"===this.readyState&&d()};e.appendChild(b)})(a.mathjax+"?config="+a.config,function(){MathJax.Hub.Config({messageStyle:"none",
-tex2jax:{inlineMath:[["$","$"],["\\(","\\)"]],skipTags:["script","noscript","style","textarea","pre"]},skipStartupTypeset:!0});MathJax.Hub.Queue(["Typeset",MathJax.Hub]);MathJax.Hub.Queue(Reveal.layout);Reveal.addEventListener("slidechanged",function(a){MathJax.Hub.Queue(["Typeset",MathJax.Hub,a.currentSlide])})})}();
+/**
+ * A plugin which enables rendering of math equations inside
+ * of reveal.js slides. Essentially a thin wrapper for MathJax.
+ *
+ * @author Hakim El Hattab
+ */
+var RevealMath = window.RevealMath || (function(){
+
+	var options = Reveal.getConfig().math || {};
+	options.mathjax = options.mathjax || 'https://cdn.mathjax.org/mathjax/latest/MathJax.js';
+	options.config = options.config || 'TeX-AMS_HTML-full';
+
+	loadScript( options.mathjax + '?config=' + options.config, function() {
+
+		MathJax.Hub.Config({
+			messageStyle: 'none',
+			tex2jax: {
+				inlineMath: [['$','$'],['\\(','\\)']] ,
+				skipTags: ['script','noscript','style','textarea','pre']
+			},
+			skipStartupTypeset: true
+		});
+
+		// Typeset followed by an immediate reveal.js layout since
+		// the typesetting process could affect slide height
+		MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub ] );
+		MathJax.Hub.Queue( Reveal.layout );
+
+		// Reprocess equations in slides when they turn visible
+		Reveal.addEventListener( 'slidechanged', function( event ) {
+
+			MathJax.Hub.Queue( [ 'Typeset', MathJax.Hub, event.currentSlide ] );
+
+		} );
+
+	} );
+
+	function loadScript( url, callback ) {
+
+		var head = document.querySelector( 'head' );
+		var script = document.createElement( 'script' );
+		script.type = 'text/javascript';
+		script.src = url;
+
+		// Wrapper for callback to make sure it only fires once
+		var finish = function() {
+			if( typeof callback === 'function' ) {
+				callback.call();
+				callback = null;
+			}
+		}
+
+		script.onload = finish;
+
+		// IE
+		script.onreadystatechange = function() {
+			if ( this.readyState === 'loaded' ) {
+				finish();
+			}
+		}
+
+		// Normal browsers
+		head.appendChild( script );
+
+	}
+
+})();

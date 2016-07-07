@@ -54,7 +54,7 @@ app.get( '/notes/:socketId', function( req, res ) {
 
 });
 
-
+// Actually listen
 server.listen( opts.port || null );
 
 var brown = '\033[33m',

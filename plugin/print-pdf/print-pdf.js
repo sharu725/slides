@@ -1,4 +1,13 @@
+/**
+ * phantomjs script for printing presentations to PDF.
+ *
+ * Example:
+ * phantomjs print-pdf.js "http://lab.hakim.se/reveal-js?print-pdf" reveal-demo.pdf
+ *
+ * By Manuel Bieh (https://github.com/manuelbieh)
+ */
 
+// html2pdf.js
 var page = new WebPage();
 var system = require( 'system' );
 
@@ -10,7 +19,10 @@ page.viewportSize = {
 	height: slideHeight
 };
 
-
+// TODO
+// Something is wrong with these config values. An input
+// paper width of 1920px actually results in a 756px wide
+// PDF.
 page.paperSize = {
 	width: Math.round( slideWidth * 2 ),
 	height: Math.round( slideHeight * 2 ),
