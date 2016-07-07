@@ -1,20 +1,19 @@
 
 
     
-    <script src="/lib/js/head.min.js"></script>
-		<script src="/js/reveal.js"></script>
+    <script src="{{site.baseurl}}/lib/js/head.min.js"></script>
+		<script src="{{site.baseurl}}/js/reveal.js"></script>
 
 		<script>
-
-			Reveal.initialize({
+   			Reveal.initialize({
 				history: true,
 
 				
 				dependencies: [
-					{ src: '/plugin/markdown/marked.js' },
-					{ src: '/plugin/markdown/markdown.js' },
-					{ src: '/plugin/notes/notes.js', async: true },
-					{ src: '/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: '{{site.baseurl}}/plugin/markdown/marked.js' },
+					{ src: '{{site.baseurl}}/plugin/markdown/markdown.js' },
+					{ src: '{{site.baseurl}}/plugin/notes/notes.js', async: true },
+					{ src: '{{site.baseurl}}/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
 		</script>
