@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+		<div class="reveal">
+			<div class="slides">
+			               
+                     {% for post in site.posts %}   
+                    
+                            
+                             <section><a href="{{ post.url | prepend: site.url }}"><h1>{{ post.title}}</h1>{{ slide.slide-data }}<small>{{ post.date | date: "%b %-d, %Y" }}</small></a></section>
+                             
+                    
+                    {% endfor %}
+    
+				
+			</div>
+		</div>
+
+		{% include scripts.html %}
+

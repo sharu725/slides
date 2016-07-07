@@ -1,0 +1,52 @@
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  
+		<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+       
+        <meta name="description" content="{{ site.description }}">
+        
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+		<link rel="stylesheet" href="/css/reveal.css">
+		
+		
+		{% if page.theme == "beige" %}
+		<link rel="stylesheet" href="/css/theme/beige.css">
+		{% elsif page.theme == "black" %}
+		<link rel="stylesheet" href="/css/theme/black.css">	
+		{% elsif page.theme == "blood" %}
+		<link rel="stylesheet" href="/css/theme/blood.css">
+		{% elsif page.theme == "league" %}
+		<link rel="stylesheet" href="/css/theme/league.css">
+		{% elsif page.theme == "moon" %}
+		<link rel="stylesheet" href="/css/theme/moon.css">
+		{% elsif page.theme == "night" %}
+		<link rel="stylesheet" href="/css/theme/night.css">
+		{% elsif page.theme == "serif" %}
+		<link rel="stylesheet" href="/css/theme/serif.css">
+		{% elsif page.theme == "simple" %}
+		<link rel="stylesheet" href="/css/theme/simple.css">
+		{% elsif page.theme == "sky" %}
+		<link rel="stylesheet" href="/css/theme/sky.css">
+		{% elsif page.theme == "solarized" %}
+		<link rel="stylesheet" href="/css/theme/solarized.css">
+		{% elsif page.theme == "white" %}
+		<link rel="stylesheet" href="/css/theme/white.css">
+		{% else %}
+		<link rel="stylesheet" href="/css/theme/blood.css">
+        {% endif %}
+        
+
+		<link rel="stylesheet" href="/lib/css/zenburn.css">
+
+
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
