@@ -5,6 +5,8 @@ description: Webjeda slides is built using revealjs. The idea is to keep all the
 
 baseurl: "/slides" # the subpath of your site, e.g. /blog
 url: "http://webjeda.com" # the base hostname & protocol for your site
+permalink: /:title/
+
 
 compress_html:
   clippings: [html,div, p, ul, td, h1, h2, h3, h4,link, meta, footer, nav, img, header, hr, br, head, style, li, ul, ol, time, main, script, title]
