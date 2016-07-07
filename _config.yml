@@ -2,7 +2,7 @@ title: Webjeda Slides
 description: Webjeda slides is built using revealjs. The idea is to keep all the slideshows in one place as posts. All your presentations can be accessed from one place!
 
 
-permalink: /:title/
+
 baseurl: "/slides" # the subpath of your site, e.g. /blog
 url: "http://webjeda.com" # the base hostname & protocol for your site
 
