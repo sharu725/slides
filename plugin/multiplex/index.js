@@ -54,7 +54,7 @@ var createHash = function(secret) {
 	return(cipher.final('hex'));
 };
 
-// Actually listen
+
 server.listen( opts.port || null );
 
 var brown = '\033[33m',

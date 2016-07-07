@@ -1,8 +1,4 @@
-/**
- * The reveal.js markdown plugin. Handles parsing of
- * markdown inside of presentations as well as loading
- * of external markdown documents.
- */
+
 (function( root, factory ) {
 	if (typeof define === 'function' && define.amd) {
 		root.marked = require( './marked' );
@@ -11,7 +7,7 @@
 	} else if( typeof exports === 'object' ) {
 		module.exports = factory( require( './marked' ) );
 	} else {
-		// Browser globals (root is window)
+
 		root.RevealMarkdown = factory( root.marked );
 		root.RevealMarkdown.initialize();
 	}
@@ -37,18 +33,15 @@
 	var SCRIPT_END_PLACEHOLDER = '__SCRIPT_END__';
 
 
-	/**
-	 * Retrieves the markdown contents of a slide section
-	 * element. Normalizes leading tabs/whitespace.
-	 */
+
 	function getMarkdownFromSlide( section ) {
 
 		var template = section.querySelector( 'script' );
 
-		// strip leading whitespace so it isn't evaluated as code
+
 		var text = ( template || section ).textContent;
 
-		// restore script end tags
+
 		text = text.replace( new RegExp( SCRIPT_END_PLACEHOLDER, 'g' ), '</script>' );
 
 		var leadingWs = text.match( /^\n?(\s*)/ )[1].length,
@@ -65,12 +58,7 @@
 
 	}
 
-	/**
-	 * Given a markdown slide section element, this will
-	 * return all arguments that aren't related to markdown
-	 * parsing. Used to forward any other user-defined arguments
-	 * to the output markdown slide.
-	 */
+
 	function getForwardedAttributes( section ) {
 
 		var attributes = section.attributes;
@@ -80,7 +68,7 @@
 			var name = attributes[i].name,
 				value = attributes[i].value;
 
-			// disregard attributes that are used for markdown loading/parsing
+			
 			if( /data\-(markdown|separator|vertical|notes)/gi.test( name ) ) continue;
 
 			if( value ) {
@@ -95,10 +83,7 @@
 
 	}
 
-	/**
-	 * Inspects the given options and fills out default
-	 * values for what's not defined.
-	 */
+
 	function getSlidifyOptions( options ) {
 
 		options = options || {};
@@ -110,9 +95,6 @@
 
 	}
 
-	/**
-	 * Helper function for constructing a markdown slide.
-	 */
 	function createMarkdownSlide( content, options ) {
 
 		options = getSlidifyOptions( options );
@@ -123,18 +105,14 @@
 			content = notesMatch[0] + '<aside class="notes">' + marked(notesMatch[1].trim()) + '</aside>';
 		}
 
-		// prevent script end tags in the content from interfering
-		// with parsing
+
 		content = content.replace( /<\/script>/g, SCRIPT_END_PLACEHOLDER );
 
 		return '<script type="text/template">' + content + '</script>';
 
 	}
 
-	/**
-	 * Parses a data string into multiple slides based
-	 * on the passed in separator arguments.
-	 */
+
 	function slidify( markdown, options ) {
 
 		options = getSlidifyOptions( options );
@@ -149,27 +127,27 @@
 			content,
 			sectionStack = [];
 
-		// iterate until all blocks between separators are stacked up
+
 		while( matches = separatorRegex.exec( markdown ) ) {
 			notes = null;
 
-			// determine direction (horizontal by default)
+
 			isHorizontal = horizontalSeparatorRegex.test( matches[0] );
 
 			if( !isHorizontal && wasHorizontal ) {
-				// create vertical stack
+
 				sectionStack.push( [] );
 			}
 
-			// pluck slide content from markdown input
+
 			content = markdown.substring( lastIndex, matches.index );
 
 			if( isHorizontal && wasHorizontal ) {
-				// add to horizontal stack
+
 				sectionStack.push( content );
 			}
 			else {
-				// add to vertical stack
+
 				sectionStack[sectionStack.length-1].push( content );
 			}
 
@@ -177,14 +155,14 @@
 			wasHorizontal = isHorizontal;
 		}
 
-		// add the remaining slide
+
 		( wasHorizontal ? sectionStack : sectionStack[sectionStack.length-1] ).push( markdown.substring( lastIndex ) );
 
 		var markdownSections = '';
 
-		// flatten the hierarchical stack, and insert <section data-markdown> tags
+
 		for( var i = 0, len = sectionStack.length; i < len; i++ ) {
-			// vertical
+
 			if( sectionStack[i] instanceof Array ) {
 				markdownSections += '<section '+ options.attributes +'>';
 
@@ -203,11 +181,7 @@
 
 	}
 
-	/**
-	 * Parses any current data-markdown slides, splits
-	 * multi-slide markdown into separate sections and
-	 * handles loading of external markdown.
-	 */
+
 	function processSlides() {
 
 		var sections = document.querySelectorAll( '[data-markdown]'),
@@ -224,14 +198,14 @@
 
 				datacharset = section.getAttribute( 'data-charset' );
 
-				// see https://developer.mozilla.org/en-US/docs/Web/API/element.getAttribute#Notes
+
 				if( datacharset != null && datacharset != '' ) {
 					xhr.overrideMimeType( 'text/html; charset=' + datacharset );
 				}
 
 				xhr.onreadystatechange = function() {
 					if( xhr.readyState === 4 ) {
-						// file protocol yields status code 0 (useful for local debug, mobile applications etc.)
+
 						if ( ( xhr.status >= 200 && xhr.status < 300 ) || xhr.status === 0 ) {
 
 							section.outerHTML = slidify( xhr.responseText, {
@@ -281,15 +255,7 @@
 
 	}
 
-	/**
-	 * Check if a node value has the attributes pattern.
-	 * If yes, extract it and add that value as one or several attributes
-	 * the the terget element.
-	 *
-	 * You need Cache Killer on Chrome to see the effect on any FOM transformation
-	 * directly on refresh (F5)
-	 * http://stackoverflow.com/questions/5690269/disabling-chrome-cache-for-website-development/7000899#answer-11786277
-	 */
+
 	function addAttributeInElement( node, elementTarget, separator ) {
 
 		var mardownClassesInElementsRegex = new RegExp( separator, 'mg' );
@@ -308,10 +274,7 @@
 		return false;
 	}
 
-	/**
-	 * Add attributes to the parent element of a text node,
-	 * or the element of an attribute node.
-	 */
+
 	function addAttributes( section, element, previousElement, separatorElementAttributes, separatorSectionAttributes ) {
 
 		if ( element != null && element.childNodes != undefined && element.childNodes.length > 0 ) {
@@ -347,10 +310,7 @@
 		}
 	}
 
-	/**
-	 * Converts any current data-markdown slides in the
-	 * DOM to HTML.
-	 */
+
 	function convertSlides() {
 
 		var sections = document.querySelectorAll( '[data-markdown]');
@@ -375,8 +335,7 @@
 								section.parentNode.getAttribute( 'data-attributes' ) ||
 								DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR);
 
-				// If there were notes, we need to re-add them after
-				// having overwritten the section's HTML
+
 				if( notes ) {
 					section.appendChild( notes );
 				}
@@ -387,7 +346,7 @@
 
 	}
 
-	// API
+
 	return {
 
 		initialize: function() {
@@ -395,7 +354,7 @@
 			convertSlides();
 		},
 
-		// TODO: Do these belong in the API?
+
 		processSlides: processSlides,
 		convertSlides: convertSlides,
 		slidify: slidify
