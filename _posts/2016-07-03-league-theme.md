@@ -1,8 +1,8 @@
 ---
-title: Blood Theme
+title: League Theme
 layout: post
-permalink: /blood/
-theme: blood
+permalink: /league/
+theme: league
  
 slides:
  - title: Slide 1
