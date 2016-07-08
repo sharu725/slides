@@ -37,7 +37,7 @@ Default theme will look like this
 This theme is responsive.
 
 ![webjeda slide responsive jekyll theme](/images/slide-responsive-jekyll-theme.png)
-{: style="text-align:center" }
+
 
 # Customization
 
@@ -56,4 +56,4 @@ theme: white
 Make changes to the **master** branch and create a pull request. Do not use **gh-pages** branch as it is used to host the theme.
 
 # License
-Read LICENSE.md
+Read [LICENSE](https://raw.githubusercontent.com/sharu725/slides/master/LICENSE.md)
