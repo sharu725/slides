@@ -9,7 +9,8 @@ layout: compress
 	        {{content}}
 	 <a href="{{site.baseurl}}">
 	<div class="home"><img src="{{site.baseurl}}/images/webjeda.png" alt="webjeda"></div>
-	</a>  
+	</a>
+	{% if site.analytics %}{% include analytics.html %}{% endif %}  
 {% include scripts.html %}
 	</body>
 
