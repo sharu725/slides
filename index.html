@@ -1,21 +1,44 @@
 ---
-layout: default
+color: 1
 ---
-
-		<div class="reveal">
-			<div class="slides">
-			               
-                     {% for post in site.posts %}   
-                    
-                            
-                             <section><a href="{{ post.url | prepend: site.baseurl }}"><h1>{{ post.title}}</h1>{{ slide.slide-data }}<small>{{ post.date | date: "%b %-d, %Y" }}</small></a></section>
-                             
-                    
-                    {% endfor %}
+<!doctype html>
+<html>
+   <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
     
-				
-			</div>
-		</div>
+        <meta name="description" content="{{ site.description }}">
+         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-		{% include scripts.html %}
-
+		<link rel="stylesheet" href="{{site.baseurl}}/css/home.css">
+	</head>
+   
+    <body>
+       <header>
+           <div class="brand"><img class="logo" src="{{site.baseurl}}/images/webjeda-slides.svg" alt="">
+           <h1 class="headline">{{site.title}}</h1></div>
+       </header>
+       
+        <div class="pack">
+ 
+{% for post in site.posts %}                              
+                               
+       <a target="_blank" class="link" href="{{site.baseurl}}{{post.url}}"> 
+        <div class="card" style="background-color: {% cycle '#e74c3c', '#1abc9c', '#e67e22', '#34495e', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6' %}" >
+           <div class="card-number">
+               {{forloop.index}}
+           </div>
+            <div class="card-title">
+                {{ post.title | truncate: 13 }}
+            </div>
+        </div>
+        </a>
+          
+{% endfor %}
+        
+      
+        
+        </div>
+    </body>
+</html>
