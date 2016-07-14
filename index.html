@@ -16,29 +16,28 @@ layout: compress
    
     <body>
        <header>
-           <div class="brand"><img class="logo" src="{{site.baseurl}}/images/webjeda-slides.svg" alt="">
-           <h1 class="headline">{{site.title}}</h1></div>
+           <a href="{{site.baseurl}}"><div class="brand"><img class="logo" src="{{site.baseurl}}/images/webjeda-slides.svg" alt="webjeda-slides">
+           <h1 class="headline">{{site.title}}</h1></div></a>
        </header>
        
         <div class="pack">
  
 {% for post in site.posts %}                              
                                
-       <a target="_blank" class="link" href="{{site.baseurl}}{{post.url}}"> 
+    <a target="_blank" class="link" href="{{site.baseurl}}{{post.url}}"> 
+       
         <div class="card" style="background-color: {% cycle '#e74c3c', '#1abc9c', '#e67e22', '#34495e', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6' %}" >
            <div class="card-number">
-               {{forloop.index}}
+               {{forloop.rindex}}
            </div>
             <div class="card-title">
                 {{ post.title | truncate: 13 }}
             </div>
         </div>
-        </a>
+    </a>
           
 {% endfor %}
-        
-      
-        
         </div>
+         {% include analytics.html %}
     </body>
 </html>

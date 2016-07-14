@@ -8,6 +8,16 @@ body{
     width: 100%;
 }
 
+.pack {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    @media screen and (max-width: $on-palm) {
+        width: 95%;
+    }
+}
+
 .card {
     /* background-color: #05a; */
     border: none;
@@ -24,7 +34,7 @@ body{
 }
 
 .card:hover{
-    box-shadow: 0px 0px 20px #9a9a9a;
+    box-shadow: 0px 0px 10px #333;
 }
 
 .card-number {
@@ -47,22 +57,20 @@ body{
 
 }
 
+
+
 .card-title{
     font-weight: 700;
     font-size: 2em;
+    font-family: sans-serif;
     color: #fff;
     text-align: center;
     word-wrap: break-word;
+    text-shadow: 0px 1px 0px #ddd, 0px 2px 0px #ddd, 0px 3px 0px #aaa, 0 10px 10px rgba(0,0,0,.15);
    
 }
 
-.pack {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-/*     display: inline-flex;
-    flex-wrap: wrap; */
-}
+
 
 .link {
     text-decoration: none;
@@ -73,7 +81,11 @@ body{
     left: 10%;
     top: 10%;
     padding: 10px;
-    margin: 10px;    
+    margin: 10px;
+    @media screen and (max-width: $on-palm) {
+        position: static;
+        padding: 0;
+    }
 }
 
 .logo{
@@ -88,9 +100,13 @@ body{
     color: #444;
     font-weight: 400;
     font-size: 63px;
-    
+    margin-left: 10px;
     @media screen and (max-width: $on-palm) {
             font-size: 33px;
     }
     
+}
+
+a {
+    text-decoration: none;
 }
