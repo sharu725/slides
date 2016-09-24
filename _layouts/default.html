@@ -7,8 +7,10 @@ layout: compress
 {% include head.html %}
     <body>
 	        {{content}}
-	 <a href="{{site.baseurl}}">
-	<div class="home"><img src="{{site.baseurl}}/images/webjeda.png" alt="webjeda"></div>
+	 <a href="{{site.baseurl}}/">
+	 <div class="home"><svg id="i-home" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+<path d="M12 20 L12 30 4 30 4 12 16 2 28 12 28 30 20 30 20 20 Z" />
+</svg></div>
 	</a>
 	{% if site.analytics %}{% include analytics.html %}{% endif %}  
 {% include scripts.html %}
