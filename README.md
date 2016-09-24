@@ -24,7 +24,7 @@ Delete ``gh-pages`` branch.
 
 You have to create a new ``gh-pages`` branch using the master branch. Go back to the forked repository and create ``gh-pages`` branch.
 
-![create gh-pages branch](/images/create-gh-pages-branch.JPG){: style="border: 1px solid #eee" }
+![create gh-pages branch](/images/create-gh-pages-branch.JPG)
 
 Now, go to settings and check the **Github Pages** section. You should see a URL where the blog is hosted.
 
