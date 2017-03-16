@@ -17,14 +17,14 @@ Fork the ``master`` branch and delete ``gh-pages`` branch in it. This is importa
 After forking the repository, click on **branches**.
 
 
-![delete gh-pages branch](/images/delete-github-branch.png)
+![delete gh-pages branch](http://webjeda.com/slides/images/delete-github-branch.png)
 
 Delete ``gh-pages`` branch.
-![delete gh-pages branch](/images/delete-github-branch-2.png)
+![delete gh-pages branch](http://webjeda.com/slides/images/delete-github-branch-2.png)
 
 You have to create a new ``gh-pages`` branch using the master branch. Go back to the forked repository and create ``gh-pages`` branch.
 
-![create gh-pages branch](/images/create-gh-pages-branch.JPG)
+![create gh-pages branch](http://webjeda.com/slides/images/create-gh-pages-branch.JPG)
 
 Now, go to settings and check the **Github Pages** section. You should see a URL where the blog is hosted.
 
@@ -32,11 +32,11 @@ This process will host the theme as a **Project Page**. You can also download th
 
 Default theme will look like this
 
-![webjeda slides jekyll theme](/images/slide-jekyll-theme.png)
+![webjeda slides jekyll theme](http://webjeda.com/slides/images/slide-jekyll-theme.png)
 
 This theme is responsive.
 
-![webjeda slide responsive jekyll theme](/images/slide-responsive-jekyll-theme.png)
+![webjeda slide responsive jekyll theme](http://webjeda.com/slides/images/slide-responsive-jekyll-theme.png)
 
 
 # Customization
