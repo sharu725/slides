@@ -4,7 +4,7 @@ Webjeda slides is built using revealjs. The idea is to keep all the slideshows i
 
 # Features
 
-## All the presentations at one place!
+## All your presentations in one place!
 This theme is useful for those who give speeches at conferences using slides, students and teachers. Manage all your presentations at one place!
 
 ## Light-weight
