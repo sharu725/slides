@@ -1,51 +1,34 @@
 ---
-layout: compress
+title: Hello, World!
+layout: post
+background: '#00000'
+
+slides:
+ - title: Hello, World!
+   slide-data: printf("Hello, World!");
+     
+ - title: My Name is<br>Ny Thyatdora.
+   slide-data: I am 20 years old.
+
+ - title: Skills
+   slide-data: C, C++, C#, and Java.
+
+ - title: Languages
+   slide-data: Khmer, and English.
+
+ - title: Interests
+   slide-data: Reading Blogs, Chill Vibe, and Self-Taught. 
+
+ - title: Projects
+   slide-data: Arrowdot POS, and Arrowdot School Management System.
+
+ - title: Contacts Me
+   slide-data: Facebook, Instagram, and Gmail!
+
 ---
-<!doctype html>
-<html>
-   <head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-    
-        <meta name="description" content="{{ site.description }}">
-         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-		<link rel="stylesheet" href="{{site.baseurl}}/css/home.css">
-        
-		    <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="{{site.baseurl}}/favicon.ico" />
-	</head>
-   
-    <body>
-       <header>
-           <a href="{{site.baseurl}}"><div class="brand"><img class="logo" src="{{site.baseurl}}/images/webjeda-slides.svg" alt="webjeda-slides">
-           <h1 class="headline">{{site.title}}</h1></div></a>
-       </header>
-       
-
-       
-       
-        <div class="pack">
- 
- <p class="head-text">What if you can manage all your presentations from one place?!</p>
- 
-{% for post in site.posts %}                              
-                               
-    <a target="_blank" class="link" href="{{site.baseurl}}{{post.url}}"> 
-       
-        <div class="card" style="background-color: {% cycle '#e74c3c', '#1abc9c', '#e67e22', '#34495e', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6' %}" >
-           <div class="card-number">
-               {{forloop.rindex}}
-           </div>
-            <div class="card-title">
-                {{ post.title | truncate: 13 }}
-            </div>
-        </div>
-    </a>
-          
+{% for slide in page.slides %}
+                    
+<section data-background="{% if slide.background %}{{slide.background}}{% else %}{{page.background}}{% endif %}"><h1>{{slide.title}}</h1>{{ slide.slide-data }}</section>
+                    
 {% endfor %}
-        </div>
-         {% include analytics.html %}
-    </body>
-</html>
